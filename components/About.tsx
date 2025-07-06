@@ -1,6 +1,31 @@
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
-import { Award, Users, Clock, Shield } from "lucide-react"
+
+// Icon components
+const AwardIcon = () => (
+  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+  </svg>
+)
+
+const UsersIcon = () => (
+  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+  </svg>
+)
+
+const ClockIcon = () => (
+  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"/>
+    <polyline points="12,6 12,12 16,14"/>
+  </svg>
+)
+
+const ShieldIcon = () => (
+  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+  </svg>
+)
 
 const founders = [
   {
@@ -25,25 +50,25 @@ const founders = [
 
 const stats = [
   {
-    icon: Award,
+    icon: AwardIcon,
     number: "500+",
     label: "Projects Completed",
     description: "Successfully delivered across NCR",
   },
   {
-    icon: Users,
+    icon: UsersIcon,
     number: "15+",
     label: "Years Experience",
     description: "Trusted expertise in waterproofing",
   },
   {
-    icon: Clock,
+    icon: ClockIcon,
     number: "24/7",
     label: "Support Available",
     description: "Emergency response service",
   },
   {
-    icon: Shield,
+    icon: ShieldIcon,
     number: "100%",
     label: "Quality Guarantee",
     description: "Satisfaction guaranteed",
@@ -52,7 +77,7 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="py-16 sm:py-20 bg-gray-50">
+    <section id="about" className="py-16 sm:py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">About J Kumar Build Tech</h2>
@@ -68,7 +93,7 @@ export default function About() {
             <Card key={index} className="text-center border-0 shadow-md">
               <CardContent className="p-4 sm:p-6">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                  <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                  <stat.icon />
                 </div>
                 <div className="text-2xl sm:text-3xl font-bold text-primary mb-2">{stat.number}</div>
                 <div className="font-semibold text-gray-900 mb-1 text-sm sm:text-base">{stat.label}</div>

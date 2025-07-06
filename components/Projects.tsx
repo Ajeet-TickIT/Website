@@ -37,7 +37,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-16 sm:py-20 bg-white">
+    <section id="projects" className="py-16 sm:py-20 bg-slate-100">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Our Success Stories</h2>
@@ -55,9 +55,9 @@ export default function Projects() {
                   <div className="space-y-4 sm:space-y-6">
                     <div>
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-3">
-                        <Badge variant="secondary" className="bg-primary/10 text-primary w-fit">
+                        <div className="bg-primary/10 text-primary w-fit px-2 py-1 rounded-md text-sm">
                           {project.category}
-                        </Badge>
+                        </div>
                         <span className="text-sm text-gray-500">{project.location}</span>
                       </div>
                       <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">{project.title}</h3>

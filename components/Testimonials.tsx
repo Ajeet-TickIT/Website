@@ -1,10 +1,33 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
+
+// Icon components
+const StarIcon = ({ filled }: { filled: boolean }) => (
+  <svg className={`w-5 h-5 ${filled ? "text-yellow-400 fill-current" : "text-gray-300"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+  </svg>
+)
+
+const QuoteIcon = () => (
+  <svg className="w-8 h-8 text-primary/20 mb-3" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+  </svg>
+)
+
+const ChevronLeftIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <polyline points="15,18 9,12 15,6"/>
+  </svg>
+)
+
+const ChevronRightIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <polyline points="9,18 15,12 9,6"/>
+  </svg>
+)
 
 const testimonials = [
   {
@@ -67,12 +90,12 @@ export default function Testimonials() {
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
-      <Star key={i} className={`w-5 h-5 ${i < rating ? "text-yellow-400 fill-current" : "text-gray-300"}`} />
+      <StarIcon key={i} filled={i < rating} />
     ))
   }
 
   return (
-    <section id="testimonials" className="py-20 bg-gray-50">
+    <section id="testimonials" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
@@ -105,7 +128,7 @@ export default function Testimonials() {
 
                 <div className="flex items-center mb-3">{renderStars(testimonial.rating)}</div>
 
-                <Quote className="w-8 h-8 text-primary/20 mb-3" />
+                <QuoteIcon />
 
                 <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
 
@@ -137,7 +160,7 @@ export default function Testimonials() {
 
               <div className="flex items-center mb-4">{renderStars(testimonials[currentIndex].rating)}</div>
 
-              <Quote className="w-10 h-10 text-primary/20 mb-4" />
+              <QuoteIcon />
 
               <p className="text-gray-700 mb-4 italic text-lg leading-relaxed">"{testimonials[currentIndex].text}"</p>
 
@@ -145,9 +168,12 @@ export default function Testimonials() {
 
               {/* Navigation */}
               <div className="flex items-center justify-between">
-                <Button variant="outline" size="icon" onClick={prevTestimonial} className="rounded-full bg-transparent">
-                  <ChevronLeft className="w-4 h-4" />
-                </Button>
+                <button 
+                  onClick={prevTestimonial} 
+                  className="border border-gray-300 rounded-full p-2 bg-transparent hover:bg-gray-50"
+                >
+                  <ChevronLeftIcon />
+                </button>
 
                 <div className="flex space-x-2">
                   {testimonials.map((_, index) => (
@@ -161,9 +187,12 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <Button variant="outline" size="icon" onClick={nextTestimonial} className="rounded-full bg-transparent">
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
+                <button 
+                  onClick={nextTestimonial} 
+                  className="border border-gray-300 rounded-full p-2 bg-transparent hover:bg-gray-50"
+                >
+                  <ChevronRightIcon />
+                </button>
               </div>
             </CardContent>
           </Card>

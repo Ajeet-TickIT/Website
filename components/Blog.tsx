@@ -2,7 +2,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import { Calendar, ArrowRight } from "lucide-react"
+
+// Icon components
+const CalendarIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+    <line x1="16" y1="2" x2="16" y2="6"/>
+    <line x1="8" y1="2" x2="8" y2="6"/>
+    <line x1="3" y1="10" x2="21" y2="10"/>
+  </svg>
+)
+
+const ArrowRightIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <line x1="5" y1="12" x2="19" y2="12"/>
+    <polyline points="12,5 19,12 12,19"/>
+  </svg>
+)
 
 const blogPosts = [
   {
@@ -58,7 +74,7 @@ const blogPosts = [
 
 export default function Blog() {
   return (
-    <section id="blog" className="py-20 bg-white">
+    <section id="blog" className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Expert Insights & Tips</h2>
@@ -75,11 +91,11 @@ export default function Blog() {
             >
               <div className="relative aspect-[2/1]">
                 <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
-                <Badge className="absolute top-4 left-4 bg-primary">{post.category}</Badge>
+                <div className="absolute top-4 left-4 bg-primary text-white px-2 py-1 rounded-md text-sm">{post.category}</div>
               </div>
               <CardHeader className="pb-3">
                 <div className="flex items-center text-sm text-gray-500 mb-2">
-                  <Calendar className="w-4 h-4 mr-2" />
+                  <CalendarIcon />
                   <span>
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",
@@ -94,19 +110,19 @@ export default function Blog() {
               </CardHeader>
               <CardContent className="pt-0">
                 <CardDescription className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</CardDescription>
-                <Button variant="ghost" className="p-0 h-auto font-semibold text-primary hover:text-primary/80">
+                <button className="p-0 h-auto font-semibold text-primary hover:text-primary/80 flex items-center">
                   Read More
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                  <ArrowRightIcon />
+                </button>
               </CardContent>
             </Card>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg">
+          <button className="border border-gray-300 bg-white hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-md font-medium">
             View All Articles
-          </Button>
+          </button>
         </div>
       </div>
     </section>

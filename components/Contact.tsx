@@ -1,266 +1,120 @@
 "use client"
 
-import type React from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react"
-import { useState } from "react"
+// Icon components
+const PhoneIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+  </svg>
+)
+
+const MailIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+)
+
+const MapPinIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
+)
+
+const ClockIcon = () => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+)
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
-    // You can integrate with your email service or backend here
-    alert("Thank you for your inquiry! We will contact you soon.")
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" })
-  }
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
-  }
-
   return (
-    <section id="contact" className="py-16 sm:py-20 bg-white">
+    <section id="contact" className="py-16 sm:py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Get Your Free Quote Today</h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Ready to protect your property? Contact us for a free consultation and detailed quote for your waterproofing
-            needs
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Contact Information</h2>
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+            Get in touch with our expert team for professional waterproofing and structural repair solutions
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
-          {/* Contact Information */}
-          <div className="lg:col-span-1 order-2 lg:order-1">
-            <div className="space-y-4 sm:space-y-6">
-              <Card className="border-0 shadow-md">
-                <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center text-lg">
-                    <Phone className="w-5 h-5 mr-3 text-primary" />
-                    Call Us
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-start p-0 h-auto text-left"
-                      onClick={() => window.open("tel:+919876543210", "_self")}
-                    >
-                      <span className="text-lg font-semibold text-primary">+91 98765 43210</span>
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      className="w-full justify-start p-0 h-auto text-left"
-                      onClick={() => window.open("tel:+911204567890", "_self")}
-                    >
-                      <span className="text-gray-600">+91 120 456 7890</span>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {/* Phone Contact */}
+          <Card className="bg-gray-800 border-gray-700 text-center">
+            <CardHeader className="pb-4">
+              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <PhoneIcon />
+              </div>
+              <CardTitle className="text-white">Call Us</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <p className="text-gray-300 text-sm font-medium">Piyush Singhal</p>
+                <p className="text-blue-400">+91 8860303034</p>
+                <p className="text-gray-300 text-sm font-medium">Manu Vaibhav</p>
+                <p className="text-blue-400">+91 9953760804</p>
+              </div>
+            </CardContent>
+          </Card>
 
-              <Card className="border-0 shadow-md">
-                <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center text-lg">
-                    <MessageCircle className="w-5 h-5 mr-3 text-green-500" />
-                    WhatsApp
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Button
-                    className="w-full bg-green-500 hover:bg-green-600"
-                    onClick={() => window.open("https://wa.me/919876543210", "_blank")}
-                  >
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Chat on WhatsApp
-                  </Button>
-                </CardContent>
-              </Card>
+          {/* Email Contact */}
+          <Card className="bg-gray-800 border-gray-700 text-center">
+            <CardHeader className="pb-4">
+              <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MailIcon />
+              </div>
+              <CardTitle className="text-white">Email Us</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <p className="text-gray-300 text-sm font-medium">Piyush Singhal</p>
+                <p className="text-red-400 text-sm break-all">piyush.singhal30@gmail.com</p>
+                <p className="text-gray-300 text-sm font-medium">Company</p>
+                <p className="text-red-400 text-sm break-all">jkumarbuildtech@gmail.com</p>
+              </div>
+            </CardContent>
+          </Card>
 
-              <Card className="border-0 shadow-md">
-                <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center text-lg">
-                    <Mail className="w-5 h-5 mr-3 text-primary" />
-                    Email Us
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start p-0 h-auto text-left"
-                    onClick={() => window.open("mailto:info@jkumarbuildtech.com", "_self")}
-                  >
-                    <span className="text-primary">info@jkumarbuildtech.com</span>
-                  </Button>
-                </CardContent>
-              </Card>
+          {/* Location */}
+          <Card className="bg-gray-800 border-gray-700 text-center">
+            <CardHeader className="pb-4">
+              <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPinIcon />
+              </div>
+              <CardTitle className="text-white">Visit Us</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <p className="text-gray-300 text-sm">G-70, Lower Ground Floor</p>
+                <p className="text-gray-300 text-sm">Office No. 001, Sector 63</p>
+                <p className="text-gray-300 text-sm">Noida, UP 201301</p>
+                <p className="text-purple-400 text-xs">GSTIN: 09AADCJ9672K1ZV</p>
+              </div>
+            </CardContent>
+          </Card>
 
-              <Card className="border-0 shadow-md">
-                <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center text-lg">
-                    <MapPin className="w-5 h-5 mr-3 text-primary" />
-                    Visit Us
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <address className="text-gray-600 not-italic">
-                    J Kumar Build Tech Pvt. Ltd.
-                    <br />
-                    Sector 62, Noida
-                    <br />
-                    Uttar Pradesh - 201309
-                    <br />
-                    <strong>GSTIN:</strong> 09ABCDE1234F1Z5
-                  </address>
-                </CardContent>
-              </Card>
-
-              <Card className="border-0 shadow-md">
-                <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center text-lg">
-                    <Clock className="w-5 h-5 mr-3 text-primary" />
-                    Business Hours
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-1 text-gray-600">
-                    <div className="flex justify-between">
-                      <span>Monday - Saturday:</span>
-                      <span>9:00 AM - 7:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Sunday:</span>
-                      <span>10:00 AM - 5:00 PM</span>
-                    </div>
-                    <div className="text-sm text-green-600 mt-2">Emergency services available 24/7</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="lg:col-span-2 order-1 lg:order-2">
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="p-4 sm:p-6">
-                <CardTitle className="text-xl sm:text-2xl">Request a Free Quote</CardTitle>
-                <CardDescription className="text-sm sm:text-base">
-                  Fill out the form below and we'll get back to you within 24 hours with a detailed quote
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-4 sm:p-6">
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Full Name *</Label>
-                      <Input
-                        id="name"
-                        type="text"
-                        placeholder="Enter your full name"
-                        value={formData.name}
-                        onChange={(e) => handleInputChange("name", e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number *</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        placeholder="Enter your phone number"
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange("phone", e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="service">Service Required</Label>
-                      <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a service" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="terrace-waterproofing">Terrace Waterproofing</SelectItem>
-                          <SelectItem value="basement-waterproofing">Basement Waterproofing</SelectItem>
-                          <SelectItem value="anti-carbonation">Anti-Carbonation Coating</SelectItem>
-                          <SelectItem value="structural-repair">Structural Repair</SelectItem>
-                          <SelectItem value="injection-grouting">Injection Grouting</SelectItem>
-                          <SelectItem value="building-restoration">Building Restoration</SelectItem>
-                          <SelectItem value="consultation">Free Consultation</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Project Details</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Please describe your waterproofing requirements, property type, and any specific concerns..."
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) => handleInputChange("message", e.target.value)}
-                    />
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full">
-                    <Send className="w-4 h-4 mr-2" />
-                    Send Quote Request
-                  </Button>
-
-                  <p className="text-sm text-gray-600 text-center">
-                    By submitting this form, you agree to our privacy policy. We'll never share your information with
-                    third parties.
-                  </p>
-                </form>
-              </CardContent>
-            </Card>
-
-            {/* Google Map Placeholder */}
-            <Card className="border-0 shadow-lg mt-8">
-              <CardContent className="p-0">
-                <div className="aspect-[16/9] bg-gray-200 rounded-lg flex items-center justify-center">
-                  <div className="text-center text-gray-600">
-                    <MapPin className="w-12 h-12 mx-auto mb-2" />
-                    <p className="font-medium">Interactive Map</p>
-                    <p className="text-sm">Sector 62, Noida Location</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          {/* Business Hours */}
+          <Card className="bg-gray-800 border-gray-700 text-center">
+            <CardHeader className="pb-4">
+              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <ClockIcon />
+              </div>
+              <CardTitle className="text-white">Business Hours</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                <p className="text-gray-300 text-sm">Monday - Saturday</p>
+                <p className="text-green-400">9:00 AM - 6:00 PM</p>
+                <p className="text-gray-300 text-sm">Sunday</p>
+                <p className="text-green-400">Emergency Only</p>
+                <p className="text-gray-400 text-xs">24/7 Emergency Support</p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
   )
 }
+             
